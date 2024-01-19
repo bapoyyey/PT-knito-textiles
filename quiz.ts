@@ -3,7 +3,7 @@
 const readlineSync = require('readline-sync');
 
 function fizzBuzz() {
-  const fizzBuzzLimit = parseInt(readlineSync.question('Enter the limit for FizzBuzz: '));
+  const fizzBuzzLimit = parseInt(readlineSync.question('Masukan angka limit angka FizzBuzz: '));
   console.log('\nFizzBuzz:');
   for (let i = 1; i <= fizzBuzzLimit; i++) {
     let output = '';
@@ -14,15 +14,26 @@ function fizzBuzz() {
 }
 
 function isPalindrome(str) {
-  const cleanStr = str.toLowerCase().replace(/[^a-z0-9]/g, '');
-  const reversedStr = cleanStr.split('').reverse().join('');
-  return cleanStr === reversedStr;
+  var cleanStr = str.toLowerCase().replace(/[^a-z0-9]/g, '');
+  var reversedStr = cleanStr.split('').reverse().join('');
+  
+  if (cleanStr === reversedStr) {
+      return true;
+  } else {
+      return false;
+  }
 }
 
+
 function palindrome() {
-  const testString = readlineSync.question('Enter a string to check for palindrome: ');
-  console.log(`Is "${testString}" a palindrome? ${isPalindrome(testString)}`);
+  const testString = readlineSync.question('masukan kata palindrome: ');
+  if (isPalindrome(testString)) {
+      console.log(`"${testString}" Merupakan kata palindrome`);
+  } else {
+      console.log(`"${testString}" Bukan kata palindrome`);
+  }
 }
+
 
 function mainMenu() {
   while (true) {
@@ -31,7 +42,7 @@ function mainMenu() {
     console.log('2. Palindrome');
     console.log('3. Exit');
 
-    const choice = readlineSync.question('Enter your choice (1-3): ');
+    const choice = readlineSync.question('Masukan pilihan (1-3): ');
 
     switch (choice) {
       case '1':
@@ -41,10 +52,10 @@ function mainMenu() {
         palindrome();
         break;
       case '3':
-        console.log('Exiting the program. Goodbye!');
+        console.log('Exiting the program.');
         process.exit(0);
       default:
-        console.log('Invalid choice. Please enter a number between 1 and 3.');
+        console.log('Invalid choice.');
     }
   }
 }

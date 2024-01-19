@@ -1,7 +1,7 @@
 // interactive.ts
 var readlineSync = require('readline-sync');
 function fizzBuzz() {
-    var fizzBuzzLimit = parseInt(readlineSync.question('Enter the limit for FizzBuzz: '));
+    var fizzBuzzLimit = parseInt(readlineSync.question('Masukan angka limit angka FizzBuzz: '));
     console.log('\nFizzBuzz:');
     for (var i = 1; i <= fizzBuzzLimit; i++) {
         var output = '';
@@ -15,11 +15,21 @@ function fizzBuzz() {
 function isPalindrome(str) {
     var cleanStr = str.toLowerCase().replace(/[^a-z0-9]/g, '');
     var reversedStr = cleanStr.split('').reverse().join('');
-    return cleanStr === reversedStr;
+    if (cleanStr === reversedStr) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 function palindrome() {
-    var testString = readlineSync.question('Enter a string to check for palindrome: ');
-    console.log("Is \"".concat(testString, "\" a palindrome? ").concat(isPalindrome(testString)));
+    var testString = readlineSync.question('masukan kata palindrome: ');
+    if (isPalindrome(testString)) {
+        console.log("\"".concat(testString, "\" Merupakan kata palindrome"));
+    }
+    else {
+        console.log("\"".concat(testString, "\" Bukan kata palindrome"));
+    }
 }
 function mainMenu() {
     while (true) {
@@ -27,7 +37,7 @@ function mainMenu() {
         console.log('1. FizzBuzz');
         console.log('2. Palindrome');
         console.log('3. Exit');
-        var choice = readlineSync.question('Enter your choice (1-3): ');
+        var choice = readlineSync.question('Masukan pilihan (1-3): ');
         switch (choice) {
             case '1':
                 fizzBuzz();
@@ -36,10 +46,10 @@ function mainMenu() {
                 palindrome();
                 break;
             case '3':
-                console.log('Exiting the program. Goodbye!');
+                console.log('Exiting the program.');
                 process.exit(0);
             default:
-                console.log('Invalid choice. Please enter a number between 1 and 3.');
+                console.log('Invalid choice.');
         }
     }
 }
